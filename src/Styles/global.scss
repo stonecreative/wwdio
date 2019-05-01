@@ -1,0 +1,45 @@
+@import './variables.scss';
+@import './emojis.scss';
+
+// html and body elements
+
+html {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background: radial-gradient(whitesmoke, #ffdd0f);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+        "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+        sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+}
+
+// standardizations
+
+a,
+ul,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    color: $appColor;
+    text-decoration: none;
+}
+
+// global classes
+
+.bold {
+    font-weight: bold;
+}
