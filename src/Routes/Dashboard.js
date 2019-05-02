@@ -1,29 +1,49 @@
 import React, { useState, useEffect } from 'react';
+import { database } from 'firebase';
+import calcDistance from '../_helpers/calcDistance';
 
 import '../Styles/Routes/Dashboard.scss';
 
 function Dashboard() {
-    const [user, updateUserLocation] = useState({
-        location: {
-            lat: null,
-            long: null
-        }
-    });
+    const [user, updateUser] = useState({ location: { lat: 0, long: 0 } });
+    const [establishments, updateEstablishments] = useState([]);
+    let [distance, updateDistance] = useState(0);
 
     useEffect(() => {
-        const location = {};
-
+        // get user's location
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(position => {
-                location.lat = position.coords.latitude.toFixed(4);
-                location.long = position.coords.longitude.toFixed(4);
+                const user = {
+                    location: {
+                        lat: parseFloat(position.coords.latitude.toFixed(4)),
+                        long: parseFloat(position.coords.longitude.toFixed(4))
+                    }
+                };
 
-                updateUserLocation({ location });
+                updateUser(user);
+
+                // read firebase database and calc distance
+                database().ref('establishments').once('value')
+                    .then(snapshot => {
+                        updateEstablishments(snapshot.val());
+
+                        // pass return of calcDistance to updateDistance
+                        if (user.location && establishments[0]) {
+                            updateDistance(
+                                calcDistance(
+                                    user.location.lat,
+                                    user.location.long,
+                                    establishments[0].lat,
+                                    establishments[0].long
+                                ).toFixed(4)
+                            );
+                        }
+                    });
             });
         } else {
             throw new Error('Geolocation not enabled.')
         }
-    }, []);
+    });
 
     return (
         <div className="route Dashboard">
@@ -31,6 +51,10 @@ function Dashboard() {
             <p>Your current location is
             lat: <span className="bold">{user.location.lat}</span>,
             long: <span className="bold">{user.location.long}</span>.
+            </p>
+            <p>You are currently&nbsp;
+            <span className="bold">{distance ? distance : ''}</span> miles away from&nbsp;
+            <span className="bold">{establishments[0] ? establishments[0].name : ''}</span>.
             </p>
         </div>
     );

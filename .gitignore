@@ -19,5 +19,6 @@ yarn-error.log*
 # production
 /.firebase
 /build
+database.rules.json
 firebase.json
 .firebaserc
