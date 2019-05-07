@@ -2,6 +2,14 @@
 
 .component.AppNav {
     margin-bottom: 52px;
+    
+    .wwd-logo {
+        display:inline;
+    }
+
+    .wwd-nav {
+        display:inline;
+    }
 
     ul {
         display: flex;

@@ -7,8 +7,8 @@ import '../Styles/Components/AppNav.scss';
 function AppNav() {
     return (
         <div className="component AppNav">
-        <img src={logo}></img>
-            <nav>
+            <img src={logo} className="wwd-logo"></img>
+            <nav class="wwd-nav">
                 <ul>
                     <li>
                         <Link to="/">Home</Link>
