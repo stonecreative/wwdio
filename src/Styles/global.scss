@@ -10,13 +10,16 @@ html {
 body {
     margin: 0;
     padding: 0 16px;
-    background: radial-gradient($appWhite, #ffdd0f);
+    min-height: 100vh;
+    background: radial-gradient($appWhite, $appYellow);
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
         "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
         sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
+
+    box-shadow: inset 0 -4px 24px $appBlack;
 }
 
 // standardizations

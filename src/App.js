@@ -15,6 +15,7 @@ function App() {
         <div className="App">
             <AppHeader />
             <Router>
+                <div className="App-background"></div>
                 <AppNav />
                 <Route path="/" exact component={Home} />
                 <Route path="/establishments/" component={Establishments} />

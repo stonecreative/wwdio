@@ -6,7 +6,7 @@ function AppHeader() {
     return (
         <div className="component AppHeader">
             <header>
-                <h1>Locals Only</h1>
+                <h1>Where We Drinkin?</h1>
             </header>
         </div>
     );
