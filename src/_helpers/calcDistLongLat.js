@@ -1,5 +1,5 @@
 // function used to calculate distance between 2 pairs of lat and long coords
-// miles is the default return value unit; however, if 'km' is passed to unit, then result is in kilometers
+// miles is the default return value unit; however, if 'km' is passed to unit parameter, then result is in kilometers
 
 function calcDistance(lat1, long1, lat2, long2, unit) {
     if ((lat1 === lat2) && (long1 === long2)) {
@@ -18,8 +18,6 @@ function calcDistance(lat1, long1, lat2, long2, unit) {
         distance = distance * 60 * 1.1515;
 
         if (unit === "km") { distance = distance * 1.609344 }
-
-        debugger;
 
         return distance;
     }

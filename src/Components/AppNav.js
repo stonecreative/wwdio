@@ -12,10 +12,10 @@ function AppNav() {
                         <Link to="/">Home</Link>
                     </li>
                     <li>
-                        <Link to="/dashboard/">Dashboard</Link>
+                        <Link to="/establishments/">Establishments</Link>
                     </li>
                     <li>
-                        <Link to="/about/">About</Link>
+                        <Link to="/specials/">Specials</Link>
                     </li>
                 </ul>
             </nav>

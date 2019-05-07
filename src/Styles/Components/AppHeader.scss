@@ -1,10 +1,12 @@
+@import '../variables.scss';
+
 .component.AppHeader {
-    margin-bottom: 16px;
+    margin-bottom: 32px;
 
     header {
         h1 {
             font-size: 64px;
-            text-shadow: 0 4px 32px whitesmoke;
+            text-shadow: 0 4px 32px $appWhite;
         }
     }
 }

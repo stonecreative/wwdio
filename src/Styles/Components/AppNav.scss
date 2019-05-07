@@ -1,14 +1,16 @@
 .component.AppNav {
-    margin-bottom: 24px;
+    margin-bottom: 40px;
 
     ul {
         display: flex;
-        justify-content: center;
+        justify-content: space-between;
 
         li {
             list-style-type: none;
-            margin: 0 16px;
+            flex: 1;
             font-weight: bold;
+            border: 1px solid;
+            border-radius: 4px;
         }
     }
 }

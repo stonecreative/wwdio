@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { database } from 'firebase';
-import calcDistance from '../_helpers/calcDistance';
+import calcDistance from '../_helpers/calcDistLongLat';
 
-import '../Styles/Routes/Dashboard.scss';
+import '../Styles/Routes/Establishments.scss';
 
-function Dashboard() {
+function Establishments() {
     const [user, updateUser] = useState({ location: { lat: 0, long: 0 } });
     const [establishments, updateEstablishments] = useState([]);
     let [distance, updateDistance] = useState(0);
@@ -46,8 +46,8 @@ function Dashboard() {
     });
 
     return (
-        <div className="route Dashboard">
-            <h2>Dashboard</h2>
+        <div className="route Establishments">
+            <h2>Establishments</h2>
             <p>Your current location is
             lat: <span className="bold">{user.location.lat}</span>,
             long: <span className="bold">{user.location.long}</span>.
@@ -60,4 +60,4 @@ function Dashboard() {
     );
 }
 
-export default Dashboard;
+export default Establishments;
