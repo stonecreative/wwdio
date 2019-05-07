@@ -21,4 +21,5 @@ yarn-error.log*
 /build
 database.rules.json
 firebase.json
+firebase-debug.log
 .firebaserc
