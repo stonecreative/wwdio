@@ -1,12 +1,12 @@
 import React from 'react';
 
 import '../Styles/Components/AppHeader.scss';
-
+import AppNav from './AppNav';
 function AppHeader() {
     return (
         <div className="component AppHeader">
             <header>
-                <h1>Where We Drinkin?</h1>
+                <AppNav/>
             </header>
         </div>
     );
