@@ -13,7 +13,6 @@ import Specials from './Routes/Specials';
 function App() {
     return (
         <div className="App">
-            <AppHeader />
             <Router>
                 <div className="App-background"></div>
                 <AppNav />

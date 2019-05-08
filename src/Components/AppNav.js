@@ -1,12 +1,14 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 
+import logo from '../Assets/Images/logo.jpg';
 import '../Styles/Components/AppNav.scss';
 
 function AppNav() {
     return (
         <div className="component AppNav">
-            <nav>
+            <img src={logo} className="wwd-logo"></img>
+            <nav class="wwd-nav">
                 <ul>
                     <li>
                         <Link to="/">Home</Link>
