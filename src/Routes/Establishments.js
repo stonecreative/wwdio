@@ -48,13 +48,13 @@ function Establishments() {
     return (
         <div className="route Establishments">
             <h2>Establishments</h2>
-            <p>Your current location is
-            lat: <span className="bold">{user.location.lat}</span>,
-            long: <span className="bold">{user.location.long}</span>.
-            </p>
+            <div>Your current location is
+                <p>lat: <span className="bold">{user.location.lat}</span>,</p>
+                <p>long: <span className="bold">{user.location.long}</span>.</p>
+            </div>
             <p>You are currently&nbsp;
-            <span className="bold">{distance ? distance : ''}</span> miles away from&nbsp;
-            <span className="bold">{establishments[0] ? establishments[0].name : ''}</span>.
+                <span className="bold">{distance ? distance : ''}</span> miles away from the&nbsp;
+                <span className="bold">{establishments[0] ? establishments[0].name : ''}</span>.
             </p>
         </div>
     );

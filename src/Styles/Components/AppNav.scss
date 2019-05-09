@@ -1,46 +1,34 @@
-@import '../variables.scss';
+@import "../variables.scss";
 
 .component.AppNav {
-    margin-bottom: 52px;
-    
-    .wwd-logo {
-        display:inline;
-    }
+  margin-bottom: 40px;
 
-    .wwd-nav {
-        display:inline;
-    }
+  ul {
+    display: flex;
+    justify-content: space-around;
 
-    ul {
-        display: flex;
-        justify-content: space-around;
+    li {
+      list-style-type: none;
+      flex: 1;
+      display: inline-block;
+      max-width: 100px;
+      background-color: $appBlack;
+      font-weight: bold;
+      border: 1px solid;
+      border-radius: 4px;
 
-        li {
-            list-style-type: none;
-            flex: 1;
-            margin: 0 8px;
-            
-            background: $appBlack;
-            font-weight: bold;
-            border: 1px solid;
-            border-radius: 4px;
+      // <Link></Link>
+      a {
+        display: inline-block;
+        padding: 8px 4px 9px 8px;
+        width: 100%;
+        height: 100%;
+        transition: background-color 100ms ease-in;
 
-            // <Link></Link>
-            a {
-                padding: 20px;
-                max-width: 200px;
-                display: inline-block;
-                width: 100%;
-                height: 100%;    
-                transition: all 6ms;
-            }
-
-            &:hover {
-                background-color: $appYellow;
-                transition: all 7ms;
-            }
-
-
+        &:hover {
+          background-color: $appYellow;
         }
+      }
     }
+  }
 }
