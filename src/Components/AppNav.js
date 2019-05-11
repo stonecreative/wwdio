@@ -12,7 +12,7 @@ function AppNav() {
                         <Link to="/">Home</Link>
                     </li>
                     <li>
-                        <Link to="/establishments/">Estabs</Link>
+                        <Link to="/establishments/">Bars</Link>
                     </li>
                     <li>
                         <Link to="/specials/">Specials</Link>
