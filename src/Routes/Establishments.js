@@ -31,18 +31,23 @@ class Establishments extends React.Component {
                 // read firebase database and calculate the distance
                 database().ref('establishments').once('value')
                     .then(snapshot => {
-                        this.setState({ establishments: snapshot.val() })
+                        let establishments = snapshot.val();
 
-                        if (this.state.user.location && this.state.establishments[0]) {
-                            this.setState({
-                                distance: calcDistance(
-                                    this.state.user.location.lat,
-                                    this.state.user.location.long,
-                                    this.state.establishments[0].lat,
-                                    this.state.establishments[0].long
-                                ).toFixed(4)
-                            });
-                        }
+                        establishments.forEach((establishment, i) => establishments[i].distance = calcDistance(
+                            this.state.user.location.lat,
+                            this.state.user.location.long,
+                            establishment.lat,
+                            establishment.long
+                        ).toFixed(4))
+
+                        // sort by closest distance first
+                        establishments.sort((a, b) => {
+                            if (a.distance < b.distance) return -1
+                            if (a.distance > b.distance) return 1
+                            return 0;
+                        });
+
+                        this.setState({ establishments });
                     });
             });
         } else {
@@ -54,14 +59,20 @@ class Establishments extends React.Component {
         return (
             <div className="route Establishments">
                 <h2>Establishments</h2>
-                <div>Your current location is
+                <div className="container user-location">Your current location is
                     <p>lat: <span className="bold">{this.state.user.location.lat}</span>,</p>
                     <p>long: <span className="bold">{this.state.user.location.long}</span>.</p>
                 </div>
-                <p>You are currently&nbsp;
-                    <span className="bold">{this.state.distance ? this.state.distance : ''}</span> miles away from the&nbsp;
-                    <span className="bold">{this.state.establishments[0] ? this.state.establishments[0].name : ''}</span>.
-                </p>
+                {
+                    this.state.establishments.map(establishment => {
+                        return (
+                            <p key={establishment.id}>You are currently&nbsp;
+                                <span className="bold">{establishment.distance}</span> miles away from&nbsp;
+                                <span className="bold">{establishment.name}</span>.
+                            </p>
+                        )
+                    })
+                }
             </div>
         );
     }
