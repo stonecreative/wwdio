@@ -1,8 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
-import logo from './Assets/Images/logo.png';
-
 import './Styles/App.scss';
 
 import AppNav from './Components/AppNav';
@@ -15,7 +13,6 @@ function App() {
     return (
         <div className="App">
             <div className="App-background"></div>
-            <img className="wwd-logo" src={logo} alt="Where We Drinkin?"></img>
             <Router>
                 <AppNav />
                 <Route path="/" exact component={Home} />

@@ -45,7 +45,44 @@ div {
   font-weight: bold;
 }
 
+.flex-container {
+  display: flex;
+
+  > * {
+    flex: 1;
+  }
+
+  &.justify-start {
+    justify-content: flex-start;
+  }
+
+  &.justify-center {
+    justify-content: center;
+  }
+
+  &.justify-end {
+    justify-content: flex-end;
+  }
+
+  &.justify-around {
+    justify-content: space-around;
+  }
+
+  &.justify-between {
+    justify-content: space-between;
+  }
+
+  &.align-center {
+    align-items: center;
+  }
+
+  &.align-end {
+    align-items: flex-end;
+  }
+}
+
 // root of the app
+
 #root {
     height: 100%;
 }
