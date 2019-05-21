@@ -8,8 +8,8 @@ import '../Styles/Components/AppNav.scss';
 function AppNav() {
     return (
         <div className="component AppNav">
-            <div class="flex-container">
-                <div class="logo-container">
+            <div className="flex-container">
+                <div className="logo-container">
                     <img className="wwd-logo" src={logo} alt="Where We Drinkin?"></img>
                 </div>
                 <nav>
