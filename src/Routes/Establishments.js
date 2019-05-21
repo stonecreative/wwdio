@@ -4,8 +4,6 @@ import getUserLocation from '../_helpers/getUserLocation';
 import getEstablishments from '../_helpers/getEstablishments';
 import sortEstablishmentsByClosest from '../_helpers/sortEstablishmentsByClosest';
 
-import globalStore from '../_stores/globalStore';
-
 import '../Styles/Routes/Establishments.scss';
 
 class Establishments extends React.Component {
@@ -13,28 +11,21 @@ class Establishments extends React.Component {
         super();
 
         this.state = {
-            user: globalStore.user,
-            establishments: globalStore.establishments
+            user: { userLocation: { lat: 0, long: 0 } },
+            establishments: []
         }
     }
 
     componentWillMount() {
-        // check to see if we already have the user and sorted establishments
-        // if not, get em
-        if (
-            !this.state.user.userLocation.lat ||
-            !this.state.establishments.length
-        ) {
-            const userLocation = getUserLocation();
+        const userLocation = getUserLocation();
 
-            getEstablishments()
-                .then(snapshot => {
-                    let establishments = sortEstablishmentsByClosest(userLocation, snapshot.val());
+        getEstablishments()
+            .then(snapshot => {
+                let establishments = sortEstablishmentsByClosest(userLocation, snapshot.val());
 
-                    this.setState({ user: { userLocation } });
-                    this.setState({ establishments })
-                });
-        }
+                this.setState({ user: { userLocation } });
+                this.setState({ establishments })
+            });
     }
 
     render() {
