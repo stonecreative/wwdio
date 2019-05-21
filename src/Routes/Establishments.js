@@ -1,58 +1,32 @@
 import React from 'react';
-import { database } from 'firebase';
-import calcDistance from '../_helpers/calcDistLongLat';
+
+import getUserLocation from '../_helpers/getUserLocation';
+import getEstablishments from '../_helpers/getEstablishments';
 
 import '../Styles/Routes/Establishments.scss';
+import sortEstablishmentsByClosest from '../_helpers/sortEstablishmentsByClosest';
 
 class Establishments extends React.Component {
     constructor() {
         super();
 
         this.state = {
-            user: { location: { lat: 0, long: 0 } },
+            user: { userLocation: { lat: 0, long: 0 } },
             establishments: [],
             distance: 0
         }
     }
 
     componentWillMount() {
-        // get user's location
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(position => {
-                const user = {
-                    location: {
-                        lat: parseFloat(position.coords.latitude.toFixed(4)),
-                        long: parseFloat(position.coords.longitude.toFixed(4))
-                    }
-                };
+        const userLocation = getUserLocation();
 
-                this.setState({ user });
+        getEstablishments()
+            .then(snapshot => {
+                let establishments = sortEstablishmentsByClosest(userLocation, snapshot.val());
 
-                // read firebase database and calculate the distance
-                database().ref('establishments').once('value')
-                    .then(snapshot => {
-                        let establishments = snapshot.val();
-
-                        establishments.forEach((establishment, i) => establishments[i].distance = calcDistance(
-                            this.state.user.location.lat,
-                            this.state.user.location.long,
-                            establishment.lat,
-                            establishment.long
-                        ).toFixed(4))
-
-                        // sort by closest distance first
-                        establishments.sort((a, b) => {
-                            if (a.distance < b.distance) return -1
-                            if (a.distance > b.distance) return 1
-                            return 0;
-                        });
-
-                        this.setState({ establishments });
-                    });
+                this.setState({ user: { userLocation } });
+                this.setState({ establishments })
             });
-        } else {
-            throw new Error('Geolocation not enabled.')
-        }
     }
 
     render() {
@@ -60,14 +34,15 @@ class Establishments extends React.Component {
             <div className="route Establishments">
                 <h2>Establishments</h2>
                 <div className="container user-location">Your current location is
-                    <p>lat: <span className="bold">{this.state.user.location.lat}</span>,</p>
-                    <p>long: <span className="bold">{this.state.user.location.long}</span>.</p>
+                    <p>lat: <span className="bold">{this.state.user.userLocation.lat}</span>,</p>
+                    <p>long: <span className="bold">{this.state.user.userLocation.long}</span>.</p>
                 </div>
                 {
                     this.state.establishments.map(establishment => {
                         return (
                             <p key={establishment.id}>You are currently&nbsp;
-                                <span className="bold">{establishment.distance}</span> miles away from&nbsp;
+                                <span className="bold">{establishment.distance}</span> miles away from
+                                <br />
                                 <span className="bold">{establishment.name}</span>.
                             </p>
                         )
