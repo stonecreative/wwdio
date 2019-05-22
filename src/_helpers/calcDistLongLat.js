@@ -19,7 +19,7 @@ function calcDistance(lat1, long1, lat2, long2, unit) {
 
         if (unit === "km") { distance = distance * 1.609344 }
 
-        return distance;
+        return Number(distance);
     }
 }
 
