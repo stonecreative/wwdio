@@ -1,5 +1,5 @@
 // function to get establishments from the database
-// returns a promise so use .then()
+// !!! ASYNC !!! returns a promise so use .then() on the return value of the function
 
 import { database } from 'firebase';
 

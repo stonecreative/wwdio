@@ -5,19 +5,28 @@ function calcDistance(lat1, long1, lat2, long2, unit) {
     if ((lat1 === lat2) && (long1 === long2)) {
         return 0;
     } else {
+        lat1 = Number(lat1);
+        long1 = Number(long1);
+        lat2 = Number(lat2);
+        long2 = Number(long2);
+
         const radlat1 = Math.PI * lat1 / 180;
         const radlat2 = Math.PI * lat2 / 180;
         const theta = long1 - long2;
         const radtheta = Math.PI * theta / 180;
         let distance = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
 
-        if (distance > 1) { distance = 1; }
+        if (distance > 1) {
+            distance = 1;
+        }
 
         distance = Math.acos(distance);
         distance = distance * 180 / Math.PI;
         distance = distance * 60 * 1.1515;
 
-        if (unit === "km") { distance = distance * 1.609344 }
+        if (unit === "km") {
+            distance = distance * 1.609344;
+        }
 
         return Number(distance);
     }

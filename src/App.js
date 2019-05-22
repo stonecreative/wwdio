@@ -1,13 +1,13 @@
 import React from 'react';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
-import './Styles/App.scss';
-
 import AppNav from './Components/AppNav';
 
 import Home from './Routes/Home';
 import Establishments from './Routes/Establishments';
 import Specials from './Routes/Specials';
+
+import './Styles/App.scss';
 
 function App() {
     return (
