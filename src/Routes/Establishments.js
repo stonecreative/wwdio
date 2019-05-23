@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import getUserLocation from '../_helpers/getUserLocation';
 import getEstablishments from '../_helpers/getEstablishments';
@@ -61,6 +62,7 @@ class Establishments extends React.Component {
                         )
                     })
                 }
+                <Link className="admin-link" to="/admin/"></Link>
             </div>
         );
     }

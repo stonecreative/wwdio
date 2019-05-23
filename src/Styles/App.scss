@@ -2,7 +2,7 @@
 @import "./variables.scss";
 
 .App {
-  padding: 32px 16px 0;
+  padding: 32px 16px;
   height: 100%;
   box-shadow: inset 0 -8px 64px $appBlack;
 
@@ -27,5 +27,16 @@
   h2 {
     margin-bottom: 16px;
     font-size: 32px;
+  }
+
+  .admin-link {
+    position: absolute;
+    right: 16px;
+    bottom: 16px;
+    font-size: 12px;
+
+    &::after {
+      content: "[ A ]";
+    }
   }
 }

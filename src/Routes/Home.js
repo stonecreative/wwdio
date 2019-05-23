@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import '../Styles/Routes/Home.scss';
 
@@ -11,6 +12,7 @@ function Home() {
                 Check out the Bars and Specials pages<br />
                 to see specials near YOU!
             </p>
+            <Link className="admin-link" to="/admin/"></Link>
         </div>
     );
 }

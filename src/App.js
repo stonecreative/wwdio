@@ -6,6 +6,7 @@ import AppNav from './Components/AppNav';
 import Home from './Routes/Home';
 import Establishments from './Routes/Establishments';
 import Specials from './Routes/Specials';
+import Admin from './Routes/Admin';
 
 import './Styles/App.scss';
 
@@ -18,6 +19,7 @@ function App() {
                 <Route path="/" exact component={Home} />
                 <Route path="/establishments/" component={Establishments} />
                 <Route path="/specials/" component={Specials} />
+                <Route path="/admin/" component={Admin} />
             </Router>
         </div>
     );
