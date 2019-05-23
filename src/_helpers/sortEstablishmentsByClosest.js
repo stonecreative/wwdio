@@ -17,8 +17,11 @@ function sortEstablishmentsByClosest(userLocation, establishments) {
     ).toFixed(2));
 
     establishments.sort((a, b) => {
-        if (a.distance < b.distance) return -1
-        if (a.distance > b.distance) return 1
+        const aDistNum = Number(a.distance);
+        const bDistNum = Number(b.distance);
+
+        if (aDistNum < bDistNum) return -1
+        if (aDistNum > bDistNum) return 1
         return 0;
     });
 
